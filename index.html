@@ -5,13 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
-    
+    <script type="module" src="./controller.js" ></script>
+    <script type="text/javascript" src="./view.js" defer></script>
 </head>
 <body>
     <div id="content-container">
         <div id="game-container">
-            <div id="game-grid"></div>
-            <div id="ships-list"></div>
+            <div id="grid-container">
+                    <ul id="x-coords">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>10</li>
+                    </ul>
+                
+                <div id="game-grid">
+                    <ul id="x-squares">
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = "y-row">
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                        <li class="x"><ul class = 'y-row'>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                            <li class="y"></li>
+                        </ul></li>
+                    </ul>
+                </div>
+                <ul id="y-coords">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            </div>
+            <div id="ships-list">
+                <h3>Battleships</h3>
+                <ul class="ships">
+                    <li class="ship">patrol boat</li>
+                    <li><img class='ship' id="submarine"  data-ship-size="2" data-orientation="horizontal" src="./images/icons8-submarine-24.png" width="80px" height="50px" alt="" draggable="true"></li>
+                    <li><img class='ship' id="destroyer"  data-ship-size="3" data-orientation="horizontal" src="./images/icons8-battleship-96.png" width="130px" height="50px;" alt="" draggable="true"></li>
+                    <li class="ship">battleship</li>
+                    <li><img class='ship' id="carrier"  data-ship-size="5" data-orientation="horizontal" src="./images/aircraft-carrier-edit.png" width="250px" height="60px;" alt="" draggable="true"></li>
+                </ul>
+            </div>
         </div>
     </div>
 
