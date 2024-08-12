@@ -1,5 +1,5 @@
 
-class Player {
+export default class Player {
 
     constructor(name, gameboard) {
         this.name = name;
@@ -22,6 +22,3 @@ class NPC extends Player {
 
     
 }
-
-
-module.exports = Player;
