@@ -1,6 +1,6 @@
-const Ship = require('./ship');
+// const Ship = require('./ship');
 
-class Gameboard {
+export default class Gameboard {
     
     // board; 
     constructor() {
@@ -80,17 +80,4 @@ class Gameboard {
 }
 
 
-// const gb = new Gameboard
-// gb.addShip(new Ship('submarine', 3, 2, 4, 0, 0);
-// gb.addShip("destroyer", 4, 0, 0, 1, 5)
-// gb.recieveAttack(2,0);
-// gb.recieveAttack(3,0);
-// gb.recieveAttack(4,0);
-// gb.recieveAttack(0,1)
-// gb.recieveAttack(0,2)
-// gb.recieveAttack(0,3)
-
-
-// console.log(gb.checkShipsFLoating());
-
-module.exports = Gameboard;
+// module.exports = Gameboard;
