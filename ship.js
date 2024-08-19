@@ -3,12 +3,12 @@ class Ship {
     constructor(name, length,x1, x2, y1, y2) {
         this.name = name || "boat";
         this.length = length;
-        this.x1 = x1;
-        this.x2 = x2;
         this.xCoords = this.setCoords(Math.min(x1,x2), Math.max(x1,x2));
         this.yCoords = this.setCoords(Math.min(y1,y2), Math.max(y1,y2));
-        this.y1 = y1;
-        this.y2 = y2;
+        // this.x1 = x1;
+        // this.x2 = x2;
+        // this.y1 = y1;
+        // this.y2 = y2;
         this.hits = 0;
         this.sunk = false;
 

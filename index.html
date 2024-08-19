@@ -11,7 +11,7 @@
 <body>
     <div id="content-container">
         <div id="game-container">
-            <div id="grid-container">
+            <div id="game-and-coords-container">
                     <ul id="x-coords">
                         <li>1</li>
                         <li>2</li>
@@ -26,129 +26,108 @@
                     </ul>
                 
                 <div id="game-grid">
-                    <ul id="x-squares">
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = "y-row">
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                        <li class="x"><ul class = 'y-row'>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                            <li class="y"></li>
-                        </ul></li>
-                    </ul>
+                    <!-- <div class="grid-box" data-row="1" data-col="1"></div>
+                    <div class="grid-box" data-row="1" data-col="2"></div>
+                    <div class="grid-box" data-row="1" data-col="3"></div>
+                    <div class="grid-box" data-row="1" data-col="4"></div>
+                    <div class="grid-box" data-row="1" data-col="5"></div>
+                    <div class="grid-box" data-row="1" data-col="6"></div>
+                    <div class="grid-box" data-row="1" data-col="7"></div>
+                    <div class="grid-box" data-row="1" data-col="8"></div>
+                    <div class="grid-box" data-row="1" data-col="9"></div>
+                    <div class="grid-box" data-row="1" data-col="10"></div>
+                    <div class="grid-box" data-row="2" data-col="1"></div>
+                    <div class="grid-box" data-row="2" data-col="2"></div>
+                    <div class="grid-box" data-row="2" data-col="3"></div>
+                    <div class="grid-box" data-row="2" data-col="4"></div>
+                    <div class="grid-box" data-row="2" data-col="5"></div>
+                    <div class="grid-box" data-row="2" data-col="6"></div>
+                    <div class="grid-box" data-row="2" data-col="7"></div>
+                    <div class="grid-box" data-row="2" data-col="8"></div>
+                    <div class="grid-box" data-row="2" data-col="9"></div>
+                    <div class="grid-box" data-row="2" data-col="10"></div>
+                    <div class="grid-box" data-row="3" data-col="1"></div>
+                    <div class="grid-box" data-row="3" data-col="2"></div>
+                    <div class="grid-box" data-row="3" data-col="3"></div>
+                    <div class="grid-box" data-row="3" data-col="4"></div>
+                    <div class="grid-box" data-row="3" data-col="5"></div>
+                    <div class="grid-box" data-row="3" data-col="6"></div>
+                    <div class="grid-box" data-row="3" data-col="7"></div>
+                    <div class="grid-box" data-row="3" data-col="8"></div>
+                    <div class="grid-box" data-row="3" data-col="9"></div>
+                    <div class="grid-box" data-row="3" data-col="10"></div>
+                    <div class="grid-box" data-row="4" data-col="1"></div>
+                    <div class="grid-box" data-row="4" data-col="2"></div>
+                    <div class="grid-box" data-row="4" data-col="3"></div>
+                    <div class="grid-box" data-row="4" data-col="4"></div>
+                    <div class="grid-box" data-row="4" data-col="5"></div>
+                    <div class="grid-box" data-row="4" data-col="6"></div>
+                    <div class="grid-box" data-row="4" data-col="7"></div>
+                    <div class="grid-box" data-row="4" data-col="8"></div>
+                    <div class="grid-box" data-row="4" data-col="9"></div>
+                    <div class="grid-box" data-row="4" data-col="10"></div>
+                    <div class="grid-box" data-row="5" data-col="1"></div>
+                    <div class="grid-box" data-row="5" data-col="2"></div>
+                    <div class="grid-box" data-row="5" data-col="3"></div>
+                    <div class="grid-box" data-row="5" data-col="4"></div>
+                    <div class="grid-box" data-row="5" data-col="5"></div>
+                    <div class="grid-box" data-row="5" data-col="6"></div>
+                    <div class="grid-box" data-row="5" data-col="7"></div>
+                    <div class="grid-box" data-row="5" data-col="8"></div>
+                    <div class="grid-box" data-row="5" data-col="9"></div>
+                    <div class="grid-box" data-row="5" data-col="10"></div>
+                    <div class="grid-box" data-row="6" data-col="1"></div>
+                    <div class="grid-box" data-row="6" data-col="2"></div>
+                    <div class="grid-box" data-row="6" data-col="3"></div>
+                    <div class="grid-box" data-row="6" data-col="4"></div>
+                    <div class="grid-box" data-row="6" data-col="5"></div>
+                    <div class="grid-box" data-row="6" data-col="6"></div>
+                    <div class="grid-box" data-row="6" data-col="7"></div>
+                    <div class="grid-box" data-row="6" data-col="8"></div>
+                    <div class="grid-box" data-row="6" data-col="9"></div>
+                    <div class="grid-box" data-row="6" data-col="10"></div>
+                    <div class="grid-box" data-row="7" data-col="1"></div>
+                    <div class="grid-box" data-row="7" data-col="2"></div>
+                    <div class="grid-box" data-row="7" data-col="3"></div>
+                    <div class="grid-box" data-row="7" data-col="4"></div>
+                    <div class="grid-box" data-row="7" data-col="5"></div>
+                    <div class="grid-box" data-row="7" data-col="6"></div>
+                    <div class="grid-box" data-row="7" data-col="7"></div>
+                    <div class="grid-box" data-row="7" data-col="8"></div>
+                    <div class="grid-box" data-row="7" data-col="9"></div>
+                    <div class="grid-box" data-row="7" data-col="10"></div>
+                    <div class="grid-box" data-row="8" data-col="1"></div>
+                    <div class="grid-box" data-row="8" data-col="2"></div>
+                    <div class="grid-box" data-row="8" data-col="3"></div>
+                    <div class="grid-box" data-row="8" data-col="4"></div>
+                    <div class="grid-box" data-row="8" data-col="5"></div>
+                    <div class="grid-box" data-row="8" data-col="6"></div>
+                    <div class="grid-box" data-row="8" data-col="7"></div>
+                    <div class="grid-box" data-row="8" data-col="8"></div>
+                    <div class="grid-box" data-row="8" data-col="9"></div>
+                    <div class="grid-box" data-row="8" data-col="10"></div>
+                    <div class="grid-box" data-row="9" data-col="1"></div>
+                    <div class="grid-box" data-row="9" data-col="2"></div>
+                    <div class="grid-box" data-row="9" data-col="3"></div>
+                    <div class="grid-box" data-row="9" data-col="4"></div>
+                    <div class="grid-box" data-row="9" data-col="5"></div>
+                    <div class="grid-box" data-row="9" data-col="6"></div>
+                    <div class="grid-box" data-row="9" data-col="7"></div>
+                    <div class="grid-box" data-row="9" data-col="8"></div>
+                    <div class="grid-box" data-row="9" data-col="9"></div>
+                    <div class="grid-box" data-row="9" data-col="10"></div>
+                    <div class="grid-box" data-row="10" data-col="1"></div>
+                    <div class="grid-box" data-row="10" data-col="2"></div>
+                    <div class="grid-box" data-row="10" data-col="3"></div>
+                    <div class="grid-box" data-row="10" data-col="4"></div>
+                    <div class="grid-box" data-row="10" data-col="5"></div>
+                    <div class="grid-box" data-row="10" data-col="6"></div>
+                    <div class="grid-box" data-row="10" data-col="7"></div>
+                    <div class="grid-box" data-row="10" data-col="8"></div>
+                    <div class="grid-box" data-row="10" data-col="9"></div>
+                    <div class="grid-box" data-row="10" data-col="10"></div> -->
                 </div>
+
                 <ul id="y-coords">
                     <li>1</li>
                     <li>2</li>
@@ -162,15 +141,24 @@
                     <li>10</li>
                 </ul>
             </div>
+
             <div id="ships-list">
-                <h3>Battleships</h3>
-                <ul class="ships">
-                    <li class="ship">patrol boat</li>
+                <h3 id="ships-list-title">Battleships</h3>
+                <div id="ships">
+                    <div class="ship" data-ship-size="2" data-orientation="horizontal" draggable="true" id="patrol-boat"></div>
+                    <div class="ship" data-ship-size="3" data-orientation="horizontal" draggable="true" id="submarine"></div>
+                    <div class="ship" data-ship-size="3" data-orientation="horizontal" draggable="true" id="destroyer"></div>
+                    <div class="ship" data-ship-size="4" data-orientation="horizontal" draggable="true" id="battleship"></div>
+                    <div class="ship" data-ship-size="5" data-orientation="horizontal" draggable="true" id="carrier"></div>
+                </div>
+                <!-- <ul class="ships">
+                    <li><img class='ship' id="patrol-boat"  data-ship-size="2" data-orientation="horizontal" src="./images/patrol-boat.png" width="80px" height="50px" alt="" draggable="true"></li>
                     <li><img class='ship' id="submarine"  data-ship-size="2" data-orientation="horizontal" src="./images/icons8-submarine-24.png" width="80px" height="50px" alt="" draggable="true"></li>
                     <li><img class='ship' id="destroyer"  data-ship-size="3" data-orientation="horizontal" src="./images/icons8-battleship-96.png" width="130px" height="50px;" alt="" draggable="true"></li>
-                    <li class="ship">battleship</li>
-                    <li><img class='ship' id="carrier"  data-ship-size="5" data-orientation="horizontal" src="./images/aircraft-carrier-edit.png" width="250px" height="60px;" alt="" draggable="true"></li>
-                </ul>
+                    <li><img class='ship' id="battleship"  data-ship-size="4" data-orientation="horizontal" src="./images/battle-ship.png" width="180px" height="50px;" alt="" draggable="true"></li>
+                    <li height="50px"><div class="l" id="carrier" data-ship-size="'5" data-orientation="horizontal" height='50px' width="250px" style="background-color: aquamarine;"></div></li>
+                    <li><img class='ship' id="carrier"  data-ship-size="5" data-orientation="horizontal" src="./images/aircraft-carrier-edit.png" width="230px" height="50px;" alt="" draggable="true"></li>
+                </ul> -->
             </div>
         </div>
     </div>

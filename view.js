@@ -1,64 +1,45 @@
 
-
-// create a function for adjusting the position of the ship according to the distance of the edge of the grid
-
-// create a function to handle x and y rotations of the ship
+// write a function that creates the gameboard so 2 boards can be easily added to the screen
+// create and export a function that add the eventlisteners and call it on the controller file.
 
 
-const grid = document.getElementById('grid-container');
-const grid_blocks = document.getElementsByClassName('y');
-const ships_box = document.getElementById('ships-list');
-const ships = document.getElementsByClassName('ship');
+const grid = document.getElementById('game-grid');
+
+const ships_list = document.getElementById('ships');
+const ships = document.querySelectorAll('.ship');
+const width = 10 //represents grid size
 
 
+function createGrid(width) {
+    for (let i = 0; i < width*width; i++){
+        block = document.createElement('div')
+        block.classList.add('grid-box');
+        block.id = `${i}`;
+        grid.appendChild(block)
+    }  
+}
 
+createGrid(width);
+const grid_blocks = document.querySelectorAll('.grid-box');
 
-// Set column and row data
-let [row, col] = [1,1];
-for (const box of grid_blocks) {
-    box.setAttribute('data-row', row);
-    box.setAttribute('data-col', col);
-    col++;
-    if (col > 10) {
-        col = 1;
-        row++;
-    }}
-
-
+function addShipEventListeners(shipsList) {
 for (const ship of ships) {
-    ship.style.transform = 'translateY(30px)';
     ship.addEventListener('dragstart', function(e) {
         e.dataTransfer.setData('text/plain', e.target.id);     
     })
-
-    ship.addEventListener('dblclick', function(e) {
-        if(ship.getAttribute('data-orientation') == 'horizontal') { 
-            ship.setAttribute('data-orientation', 'vertical') 
-            ship.style.transform = 'rotate(90deg) translateX(30px)';
-        }
-        else { 
-            ship.setAttribute('data-orientation', 'horizontal') 
-            ship.style.transform = 'rotate(0deg) translateY(30px)';
-        }
-        if (ship.style.gridArea != "") {
-            const style = window.getComputedStyle(ship);
-            const row = style.getPropertyValue('grid-row-start')
-            const col = style.getPropertyValue('grid-column-start')
-            adjustShipAlignment(ship, row, col)
-        }
-    })
+    ship.addEventListener('dblclick', rotate);
 }
 
-ships_box.addEventListener('dragover', function(e) {
+ships_list.addEventListener('dragover', function(e) {
     e.preventDefault();
 })
 
-ships_box.addEventListener('drop', function(e) {
+ships_list.addEventListener('drop', function(e) {
     const id = e.dataTransfer.getData('text/plain');
     const ship = document.getElementById(id);
     ship.removeAttribute('style');
-    ships_box.appendChild(ship);
-})   
+}) 
+}  
 
 grid.addEventListener('dragover', function(e) {
     e.preventDefault();
@@ -70,44 +51,56 @@ grid.addEventListener('drop', function(e) {
     const ship = document.getElementById(id);
     const targetBox = e.target;
     
-    if (targetBox.classList.contains('y')) {
-        const row = targetBox.getAttribute('data-row');
-        const col = targetBox.getAttribute('data-col');
-        adjustShipAlignment(ship, row, col)
-        grid.appendChild(ship);
+    if (targetBox.classList.contains('grid-box')) {
+        const box = Number(targetBox.getAttribute('id'));
+        addShip('player', ship, box);
     }
 })
 
-
-function adjustShipAlignment(ship, row, col) {
-    let offset = 0;
-    const shipSize = parseInt(ship.getAttribute('data-ship-size'));
-    const orientation = ship.getAttribute('data-orientation');
-
-    // if ship is horizontal, check y column for distance to edge. Otherwise, check x row
-    const pos = orientation == 'horizontal' ? parseInt(col) : parseInt(row);
-   
-    if ((10 - pos) < shipSize) {
-        // checks the right side or the bottom overflow of the ship depending on orientation
-        // offset = pos - Math.abs(10-pos-Math.floor(shipSize/2));
-        offset = pos - (shipSize - (10 - pos))
-    }
-    else if((pos - shipSize) < 0) {
-        // checks the left side or the top overflow of the ship depending on orientation
-        offset = (Math.floor(shipSize/2) + pos);
-    }
-    else {
-        offset = pos;
-    }
-
-    if (orientation == 'horizontal') {
-        ship.style.gridArea = `${row} / ${offset - Math.floor(shipSize/2)} / span ${Math.floor(shipSize/2)} / span 1`
-    }
-    else {
-        ship.style.gridArea = `${offset - Math.floor(shipSize/2)} / ${col} / span 1 / span ${Math.floor(shipSize/2)}`
-    }
-
-    
-
+function addShip(user, ship, box) {
+    shipSize = Number(ship.getAttribute('data-ship-size'));
+    const isHorizontal = ship.getAttribute('data-orientation') === 'horizontal' ? true : false; 
+    const shipArea = Array.from(grid_blocks).slice(box, box+shipSize)
+    if (isValidLocation(shipSize, box, isHorizontal, shipArea)) {
+        for(let i=0; i<shipSize; i++) {
+            if (isHorizontal) {grid_blocks[box+i].classList.add('contains-ship')
+            }else {
+                grid_blocks[box+i*10].classList.add('contains-ship');
+            }
+        }
+        ships_list.removeChild(ship);
+    } 
 }
+
+function isValidLocation(shipSize, pos, isHorizontal, shipArea) {
+    if (isInborder(shipSize, pos, isHorizontal) && hasNoCollision(shipArea)) return true;
+    return false
+}
+
+function isInborder(shipSize, pos, isHorizontal) {
+    if (isHorizontal) {
+        if (width - pos%10 < shipSize-1) { return false; }
+    }
+    if (!isHorizontal && pos+shipSize*10 > 100 ) { return false; }
+    else return true;
+}
+
+function hasNoCollision(pos) {
+    return pos.every(block => {
+        return !block.classList.contains('contains-ship');
+    });
+}
+
+function rotate(e) {
+    const ship = e.currentTarget;
+    if(ship.getAttribute('data-orientation') == 'horizontal') { 
+        ship.setAttribute('data-orientation', 'vertical') 
+        ship.style.transform = 'rotate(90deg)';
+    }
+    else { 
+        ship.setAttribute('data-orientation', 'horizontal') 
+        ship.style.transform = 'rotate(0deg)';
+    }
+}
+
 
