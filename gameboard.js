@@ -1,4 +1,3 @@
-// const Ship = require('./ship');
 
 export default class Gameboard {
     
@@ -6,7 +5,7 @@ export default class Gameboard {
     // ship objects stored in the list contain their own coordinates
     // this.ships will be used to determine if a player has lost
     constructor() {
-        this.board = [] //[...this.createBoard()];
+        this.board = []; // hold a list of attacked coordinates
         this.ships = [];
         this.shipsFLoating = true;
         // const shipList = [
@@ -23,29 +22,10 @@ export default class Gameboard {
     
     getShips() { return this.ships }
 
-    // createBoard() { return Array.from({ length: 10 }, () => 
-    //     new Array(10).fill(0)); }
-
     updateBoard(board) { this.board = board }
 
     addShip(ship) {
         this.ships.push(ship);
-        // const board = this.getBoard();
-        //     if(ship.x1 !== ship.x2) {
-        //         let pos = Math.min(ship.x1, ship.x2);
-        //         for(let i=1; i <= ship.length; i++){
-        //             board[pos][ship.y1] = 1;
-        //             pos += 1;
-        //         }
-        //     }
-        //     if (ship.y1 !== ship.y2) {
-        //         let pos = Math.min(ship.y1, ship.y2);
-        //         for(let i=1; i <= ship.length; i++){
-        //             board[ship.x1][pos] = 1;
-        //             pos += 1;
-        //         }
-        //     }
-        // this.board = board;
     }
 
     findShip(x,y) {
@@ -64,11 +44,7 @@ export default class Gameboard {
         if (ship !== null && ship !== undefined) {
             ship.hit();
             this.updateShipsStatus();
-        }
-        // const board = this.getBoard()
-        // board[x][y] = 'x';
-        // this.updateBoard(board);
-            
+        }   
     }
 
     updateShipsStatus() {
@@ -81,6 +57,3 @@ export default class Gameboard {
 
     checkShipsFLoating() { return this.shipsFLoating; }
 }
-
-
-// module.exports = Gameboard;
