@@ -6,19 +6,29 @@ export default class Player {
         this.gb = gameboard;
     }
 
-    populateBoard() {
-        this.gb.addShip('patrol boat', 2, 2, 3, 0, 0);
-        this.gb.addShip('submarine', 3, 2, 4, 3, 3);
-        this.gb.addShip("destroyer", 3, 0, 0, 5, 7);
-        this.gb.addShip("battleship", 4, 7, 7, 4, 7);
-        this.gb.addShip('carrier', 5, 2, 6, 9, 9);
-    }
 }
 
-class NPC extends Player {
-    constructor(name, gameboard) {
+export class NPC extends Player {
+    constructor(name, gameboard, shipList) {
         super(name, gameboard);
+        this.shipList = shipList;
     }
 
+    randomCoordGenerator() {
+        return [Math.random()*10, Math.random()*10];
+    }
+    populateBoard() {
+        for (ship of shipList) {
+            startIndex = this.randomCoordGenerator();
+            if (ship.getOrientation === 0) {
+                ship.setxCoords(strartIndex[0], strartIndex[0]);
+                ship.setyCoords(startIndex[1], ship.getLength());
+            } else {
+                ship.setxCoords(strartIndex[0], ship.getLength());
+                ship.setyCoords(startIndex[1], startIndex[1]);
+            }
+            this.gb.addShip(...ship);
+        }
+    }
     
 }
