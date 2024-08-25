@@ -3,7 +3,7 @@ export default class Player {
 
     constructor(name, gameboard) {
         this.name = name;
-        this.gb = gameboard;
+        this.gameboard = gameboard;
     }
 
 }
