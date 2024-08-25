@@ -8,14 +8,6 @@ export default class Gameboard {
         this.board = []; // hold a list of attacked coordinates
         this.ships = [];
         this.shipsFLoating = true;
-        // const shipList = [
-        //     {name:'patrol boat', length: 2}, 
-        //     {name:'submarine', length: 3},
-        //     {name:'destroyer', length: 3},
-        //     {name:'battleship', length: 4},
-        //     {name:'carrier', length: 5} 
-        // ];
-
         }
 
     getBoard() { return this.board }
@@ -28,23 +20,24 @@ export default class Gameboard {
         this.ships.push(ship);
     }
 
-    findShip(x,y) {
+    findShip(blockId) {
         for(const ship of this.ships) {
-            if(ship.getxCoords().includes(x)){
-                if(ship.getyCoords().includes(y)){
-                    return ship;
-                }
+            console.log(ship)
+            if(ship.getLocation().includes(blockId)){
+                return ship;
             }
         }
+        return null;
     }
+    
 
-    recieveAttack(x, y) {
-        this.board.push([x,y]);
-        const ship = this.findShip(x,y);
+    recieveAttack(blockId) {
+        if (!this.board.includes(blockId)) this.board.push(blockId);
+        const ship = this.findShip(blockId);
         if (ship !== null && ship !== undefined) {
             ship.hit();
             this.updateShipsStatus();
-        }   
+        }      
     }
 
     updateShipsStatus() {
