@@ -11,8 +11,8 @@
 <body>
     <div id="content-container">
         <div id="game-container">
-            <div id="game-and-coords-container">
-                    <ul id="x-coords">
+            <div class="game-and-coords-container">
+                    <ul class="x-coords">
                         <li>1</li>
                         <li>2</li>
                         <li>3</li>
@@ -24,11 +24,9 @@
                         <li>9</li>
                         <li>10</li>
                     </ul>
-                
-                <div id="game-grid">
+                <div class="game-grid player1">
                 </div>
-
-                <ul id="y-coords">
+                <ul class="y-coords">
                     <li>1</li>
                     <li>2</li>
                     <li>3</li>
@@ -40,18 +38,58 @@
                     <li>9</li>
                     <li>10</li>
                 </ul>
-            </div>
-
-            <div id="ships-list">
-                <h3 id="ships-list-title">Battleships</h3>
-                <div id="ships">
-                    <div class="ship" data-ship-size="2" data-orientation="horizontal" draggable="true" id="patrol-boat"></div>
-                    <div class="ship" data-ship-size="3" data-orientation="horizontal" draggable="true" id="submarine"></div>
-                    <div class="ship" data-ship-size="3" data-orientation="horizontal" draggable="true" id="destroyer"></div>
-                    <div class="ship" data-ship-size="4" data-orientation="horizontal" draggable="true" id="battleship"></div>
-                    <div class="ship" data-ship-size="5" data-orientation="horizontal" draggable="true" id="carrier"></div>
+                <div class="ships-list">
+                    <h3 class="ships-list-title">Battleships</h3>
+                    <div class="ships player1">
+                        <div class="ship" data-ship-size="2" data-angle="0" draggable="true" id="patrol-boat"></div>
+                        <div class="ship" data-ship-size="3" data-angle="0" draggable="true" id="submarine"></div>
+                        <div class="ship" data-ship-size="3" data-angle="0" draggable="true" id="destroyer"></div>
+                        <div class="ship" data-ship-size="4" data-angle="0" draggable="true" id="battleship"></div>
+                        <div class="ship" data-ship-size="5" data-angle="0" draggable="true" id="carrier"></div>
+                    </div>
                 </div>
             </div>
+            <div class="game-and-coords-container">
+                <ul class="x-coords">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            <div class="game-grid player2">
+            </div>
+            <ul class="y-coords">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+            <div class="ships-list">
+                <h3 class="ships-list-title">Battleships</h3>
+                <div class="ships player2">
+                    <div class="ship" data-ship-size="2" data-angle="0" draggable="true" id="patrol-boat2"></div>
+                    <div class="ship" data-ship-size="3" data-angle="0" draggable="true" id="submarine2"></div>
+                    <div class="ship" data-ship-size="3" data-angle="0" draggable="true" id="destroyer2"></div>
+                    <div class="ship" data-ship-size="4" data-angle="0" draggable="true" id="battleship2"></div>
+                    <div class="ship" data-ship-size="5" data-angle="0" draggable="true" id="carrier2"></div>
+                </div>
+            </div>
+        </div>
+
+            
+            
         </div>
     </div>
 
