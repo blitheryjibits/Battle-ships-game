@@ -9,32 +9,33 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: .5rem;
 }
 
 #game-container {
     display: flex;
     flex-direction: row;
-    width: 800px;
-    height: 600px;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
     background-color: rgba(42, 115, 198, 0.8);
     align-items: center;
+    justify-content: center;
 }
 
-#game-and-coords-container {
+.game-and-coords-container {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(13, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
 }
 
-#game-grid {
-    grid-area: 2 / 2 / 12 / 12;
+.game-grid {
+    grid-area: 2 / 2 / 6 / 6;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
-    height: 500px;
-    width: 500px;
+    height: 300px;
+    width: 300px;
     border: 1px solid black;
     margin: .5rem;
 }
@@ -43,45 +44,42 @@ div.grid-box {
     width: 100%;
     height:100%;
     border: 1px solid black;
-    /* position: relative;
-    overflow: hidden; */
 }
 
 ul {
     list-style: none;
 }
 
-#x-coords {
-    grid-area: 2 / 1 / 12 / 2;
+.x-coords {
+    grid-area: 2 / 1 / 6 / 2;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
 
-#y-coords {
-    grid-area: 12 / 2 / 13 / 12;
+.y-coords {
+    grid-area: 6 / 2 / 7 / 6;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 
 }
 
-#y-coords li {
+.y-coords li {
     display: flex;
     align-items: center;
 }
 
-#ships-list {
+.ships-list {
+    grid-area: 7/2/8/6;
     display: grid;
-    grid-template-rows: repeat(10,1fr);
+    grid-template-rows: repeat(2,1fr);
     height: 100%;
-    width: 250px;
     row-gap: 10px;
     }
 
-#ships-list-title {
-    grid-area: 1 / 1 / 2 / 2;
+.ships-list-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,36 +87,35 @@ ul {
     color: aliceblue;
 }
 
-#ships {
-    grid-area: 2 / 1 / 10 / 2;
-    display: grid;
-    /* flex-direction: column; */
-    
-    /* align-items: center; */
+.ships {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .ship {
-    height: 50px;
-    border-radius: 20%;
+    height: 10px;
+    border-radius: 10%;
 }
-#patrol-boat{
-    width: 100px;
+#patrol-boat, #patrol-boat2{
+    width: 20px;
     background-color: beige;
 }
-#submarine{
-    width: 150px;
+#submarine, #submarine2{
+    width: 30px;
     background-color: beige;
 }
-#destroyer{
-    width: 150px;
+#destroyer, #destroyer2{
+    width: 30px;
     background-color: beige;
 }
-#battleship{
-    width: 200px;
+#battleship, #battleship2{
+    width: 40px;
     background-color: beige;
 }
-#carrier{
-    width: 250px;
+#carrier, #carrier2{
+    width: 50px;
     background-color: beige;
 }
 
@@ -126,14 +123,23 @@ ul {
     background-color: beige;
 }
 
-/* .ships li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} 
+.hit {
+    position: relative;
+}
 
-#game-grid .ship {
-    display: flex;
-    justify-self: center;
-    align-self: center;
-} */
+.hit::before, .hit::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 2px;
+    background-color: red;
+}
+
+.hit::before {
+    transform: translate(-50%, -50%) rotate(45deg)
+}
+.hit::after {
+    transform: translate(-50%, -50%) rotate(-45deg)
+}
