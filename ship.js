@@ -1,13 +1,12 @@
 class Ship {
 
-    constructor(name, length,x1, x2, y1, y2) {
+    constructor(name, length, angle, blockId) {
         this.name = name || "boat";
         this.length = length;
-        this.xCoords = x1 && x2 ? this.setCoords(Math.min(x1,x2), Math.max(x1,x2)) : null;
-        this.yCoords = y1 && y2 ? this.setCoords(Math.min(y1,y2), Math.max(y1,y2)) : null;
         this.hits = 0;
         this.sunk = false;
-        this.orientation = 0;
+        this.angle = angle || "0";
+        this.shipLocations = blockId ? this.setLocation(blockId) : null; //contains an array of blockIds where the ship is located
     }
     
     hit = () => { 
@@ -19,14 +18,20 @@ class Ship {
     getyCoords = () => { return this.yCoords; }
     getLength = () => { return this.length; }
     getName = () => { return this.name; }
-    getOrientation = () => { return this.orientation; }
-
-    setCoords = (coord1, coord2) => {
-        return Array.from({length: coord2-coord1 +1}, (_, i) => {return coord1+i});
+    getAngle = () => { return this.angle; }
+    getLocation = () => { return this.shipLocations; }
+    setLocation = (blockId) => {
+        if (this.angle === "0") {
+            this.shipLocations = Array.from({length: this.length}, (_, i) => {return blockId + i});
+        } else {
+            this.shipLocations = Array.from({length: this.length}, (_, i) => {return blockId + i*10});
+        }
+        return this.shipLocations;
     }
-    setxCoords = (x, shipLength) => { this.xCoords = setCoords(x, x+shipLength); }
-    setyCoords = (y, shipLength) => { this.yCoords = setCoords(y, y+shipLength); }
-    setOrientation = (angle) => { this.orientation = angle; }
+
+    setAngle = (angle) => { 
+        this.angle = angle; 
+    }
 }
 
 export default Ship;
