@@ -143,3 +143,28 @@ ul {
 .hit::after {
     transform: translate(-50%, -50%) rotate(-45deg)
 }
+
+.hide {
+    background-color: rgba(42, 115, 198, 0.8);
+}
+
+.not-clickable {
+    pointer-events: none;
+}
+
+#win-message {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 50vw;
+    background-color: rgba(107, 0, 221, 0.849);
+    border: 2px solid rgba(140, 0, 0, 0.84);
+    border-radius: 5px;
+    color: aliceblue;
+}
+
+.hidden {
+    display: none !important;
+}
