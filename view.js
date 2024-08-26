@@ -17,7 +17,6 @@ function BattleshipUI(player, Ship) {
             const block = document.createElement('div');
             block.classList.add('grid-box');
             block.id = `${i}`;
-            block.addEventListener('click', this.handleClick.bind(this));
             this.gridBlocks.push(block);
             this.grid.appendChild(block);
         }
@@ -64,7 +63,6 @@ function BattleshipUI(player, Ship) {
                 }
             }
             player.gameboard.addShip(new Ship(ship.id, shipSize, angle, box))
-            console.log(player.gameboard)
             this.ships.removeChild(ship)
         }
     },
@@ -99,8 +97,22 @@ function BattleshipUI(player, Ship) {
         const block = e.currentTarget;
         player.gameboard.recieveAttack(block.id);
         block.classList.add('hit');
-        console.log(block);
+    },
 
+    hideGrid: function() {
+        setTimeout(() => {
+            this.gridBlocks.forEach(block => {
+                block.classList.add('hide');
+            });
+        }, 3000)
+    },
+
+    revealGrid: function() {
+        setTimeout(() => {
+            this.gridBlocks.forEach(block => {
+                block.classList.remove('hide');
+            });
+        }, 3000)
     }
 
 }} // end battleshipUI
