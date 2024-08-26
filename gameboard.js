@@ -10,7 +10,7 @@ export default class Gameboard {
         this.shipsFLoating = true;
         }
 
-    getBoard() { return this.board }
+    getBoard() { return this }
     
     getShips() { return this.ships }
 
@@ -22,8 +22,7 @@ export default class Gameboard {
 
     findShip(blockId) {
         for(const ship of this.ships) {
-            console.log(ship)
-            if(ship.getLocation().includes(blockId)){
+            if(ship.getLocation().includes(Number(blockId))){
                 return ship;
             }
         }
@@ -48,5 +47,5 @@ export default class Gameboard {
         if (!shipStatus.includes(false)) this.shipsFLoating = false;
     }
 
-    checkShipsFLoating() { return this.shipsFLoating; }
+    checkShipsFloating() { return this.shipsFLoating; }
 }
