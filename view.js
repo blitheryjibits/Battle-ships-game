@@ -49,7 +49,7 @@ function BattleshipUI(player, Ship) {
         if(angle === "0"){
             shipArea.push(...this.gridBlocks.slice(box, box + shipSize))
         } else {
-            for (let i = 0; i <= shipSize; i++) {
+            for (let i = 0; i < shipSize; i++) {
                 shipArea.push(this.gridBlocks[box + i*10]);
             }
         }
@@ -75,11 +75,11 @@ function BattleshipUI(player, Ship) {
         if (angle === '0') {
             return this.gridWidth - pos % 10 >= shipSize;
         }
-        return pos + (shipSize-1) * 10 <= 100;
+        return pos + (shipSize-1) * 10 < 100;
     },
 
-    hasNoCollision: function(pos) {
-        return pos.every(block => !block.classList.contains('contains-ship'));
+    hasNoCollision: function(shipArea) {
+        return shipArea.every(block => !block.classList.contains('contains-ship'));
     },
 
     rotate: function(e) {
@@ -96,7 +96,10 @@ function BattleshipUI(player, Ship) {
     handleClick: function(e) {
         const block = e.currentTarget;
         player.gameboard.recieveAttack(block.id);
-        block.classList.add('hit');
+        block.classList.contains('contains-ship') ? 
+            block.classList.add('hit') :
+            block.classList.add('miss') ;
+            block.classList.remove('hide');
     },
 
     hideGrid: function() {
