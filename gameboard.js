@@ -48,4 +48,22 @@ export default class Gameboard {
     }
 
     checkShipsFloating() { return this.shipsFLoating; }
+
+    randomCoordGenerator() {
+        return [Math.random()*10, Math.random()*10];
+    }
+
+    populateBoard(shipsList) {
+        for (ship of shipsList) {
+            startIndex = this.randomCoordGenerator();
+            if (ship.getOrientation === 0) {
+                ship.setxCoords(strartIndex[0], strartIndex[0]);
+                ship.setyCoords(startIndex[1], ship.getLength());
+            } else {
+                ship.setxCoords(strartIndex[0], ship.getLength());
+                ship.setyCoords(startIndex[1], startIndex[1]);
+            }
+            this.board.addShip(ship);
+        }
+    }
 }
