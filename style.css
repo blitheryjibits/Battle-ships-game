@@ -144,6 +144,17 @@ ul {
     transform: translate(-50%, -50%) rotate(-45deg)
 }
 
+div.miss {
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    background: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+}
+
 .hide {
     background-color: rgba(42, 115, 198, 0.8);
 }
