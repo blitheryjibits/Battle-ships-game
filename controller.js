@@ -9,40 +9,40 @@ const player1ships = document.querySelector('.ships.player1');
 const player2ships = document.querySelector('.ships.player2');
 const gridWidth = 10;
 const message = document.querySelector('#win-message');
-        // const shipList = [
-        //     {name:'patrol boat', length: 2}, 
-        //     {name:'submarine', length: 3},
-        //     {name:'destroyer', length: 3},
-        //     {name:'battleship', length: 4},
-        //     {name:'carrier', length: 5} 
-        // ];
+
 
 const player1 = new Player('player1', new Gameboard());
 const player2 = new Player('player2', new Gameboard());
 
-const player1UI = new BattleshipUI(player1, Ship);
+const player1UI = BattleshipUI(player1, Ship);
 const player2UI = BattleshipUI(player2, Ship);
-player1UI.init(player1Grid, player1ships, gridWidth);
-player2UI.init(player2Grid, player2ships, gridWidth);
 
-player1UI.createGrid();
-player2UI.createGrid();
+setup();
 
-player1UI.grid.addEventListener('dragover', player1UI.handleDragOver);
-player1UI.grid.addEventListener('drop', player1UI.handleDrop.bind(player1UI));
-
-player1UI.shipsArray.forEach(ship => {
-        ship.addEventListener('dragstart', player1UI.handleDragStart);
-        ship.addEventListener('dblclick', player1UI.rotate);
-    });
-
-player2UI.grid.addEventListener('dragover', player2UI.handleDragOver);
-player2UI.grid.addEventListener('drop', player2UI.handleDrop.bind(player2UI));
+function setup() {
+    player1UI.init(player1Grid, player1ships, gridWidth);
+    player2UI.init(player2Grid, player2ships, gridWidth);
     
-player2UI.shipsArray.forEach(ship => {
-            ship.addEventListener('dragstart', player2UI.handleDragStart);
-            ship.addEventListener('dblclick', player2UI.rotate);
+    player1UI.createGrid();
+    player2UI.createGrid();
+    
+    player1UI.grid.addEventListener('dragover', player1UI.handleDragOver);
+    player1UI.grid.addEventListener('drop', player1UI.handleDrop.bind(player1UI));
+    
+    player1UI.shipsArray.forEach(ship => {
+            ship.addEventListener('dragstart', player1UI.handleDragStart);
+            ship.addEventListener('dblclick', player1UI.rotate);
         });
+    
+    player2UI.grid.addEventListener('dragover', player2UI.handleDragOver);
+    player2UI.grid.addEventListener('drop', player2UI.handleDrop.bind(player2UI));
+        
+    player2UI.shipsArray.forEach(ship => {
+                ship.addEventListener('dragstart', player2UI.handleDragStart);
+                ship.addEventListener('dblclick', player2UI.rotate);
+            });
+    
+}
 
 
 // Create logic for players to add all their ships before passing to the next player.
@@ -106,6 +106,10 @@ function checkWinStatus(player) {
 function displayWinningMessage(player) {
     message.textContent += player.name ==='player1' ? 'Player 2' : 'Player 1';
     message.classList.remove('hidden');
+    player1Grid.classList.add('not-clickable');
+    player1UI.revealGrid();
+    player2Grid.classList.add('not-clickable');
+    player2UI.revealGrid();
 }
 
 observer.observe(player1ships, { childList : true })
