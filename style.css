@@ -9,6 +9,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('./images/btsh-bg.jpg');
+    background-size: cover;
 }
 
 #game-container {
@@ -29,7 +31,15 @@
     grid-template-rows: repeat(8, 1fr);
 }
 
+.player-title {
+    grid-area: 1 / 2 / 2 / 6;
+    display: flex;
+    justify-self: center;
+    align-self: flex-end;
+}
+
 .game-grid {
+    position: relative;
     grid-area: 2 / 2 / 6 / 6;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -55,7 +65,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .y-coords {
@@ -63,12 +73,23 @@ ul {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-
+    align-items: flex-start;
+    height: 25%;
 }
 
 .y-coords li {
     display: flex;
     align-items: center;
+}
+
+.random-generator {
+    grid-area: 6 / 3 / 7 / 5;
+    display: flex;
+    align-self: flex-end;
+    justify-self: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: .2rem .2rem;
 }
 
 .ships-list {
@@ -98,30 +119,30 @@ ul {
     height: 10px;
     border-radius: 10%;
 }
-#patrol-boat, #patrol-boat2{
+.patrol-boat {
     width: 20px;
-    background-color: beige;
+    background-color: rgb(255, 255, 138);
 }
-#submarine, #submarine2{
+.submarine {
     width: 30px;
-    background-color: beige;
+    background-color: rgb(145, 241, 81);
 }
-#destroyer, #destroyer2{
+.destroyer {
     width: 30px;
-    background-color: beige;
+    background-color: rgb(107, 247, 194);
 }
-#battleship, #battleship2{
+.battleship {
     width: 40px;
-    background-color: beige;
+    background-color: rgb(232, 50, 50);
 }
-#carrier, #carrier2{
+.carrier {
     width: 50px;
-    background-color: beige;
+    background-color: rgb(51, 51, 35);
 }
 
-.contains-ship {
+/* .contains-ship {
     background-color: beige;
-}
+} */
 
 .hit {
     position: relative;
@@ -174,6 +195,41 @@ div.miss {
     border: 2px solid rgba(140, 0, 0, 0.84);
     border-radius: 5px;
     color: aliceblue;
+}
+
+.hit-message {
+    position: absolute;
+    top: 38%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: red;
+    opacity: .6;
+    animation: hit-message .8s linear forwards;
+}
+
+
+@keyframes hit-message {
+    0% {
+        transform: rotate(-20deg) scale(1);
+        /* opacity: .5; */
+    }
+    25% {
+        transform: rotate(40deg) scale(2);
+        /* opacity: 1; */
+    }
+    50% {
+        transform: rotate(20deg) scale(2);
+        /* opacity: .5; */
+    }
+    75% {
+        transform: rotate(0deg) scale(2);
+        /* opacity: 1; */
+    }
+    100% {
+        transform:  rotate(-20deg) scale(0);
+        /* opacity: .5; */
+    }
 }
 
 .hidden {
