@@ -9,15 +9,13 @@ const player1ships = document.querySelector('.ships.player1');
 const player2ships = document.querySelector('.ships.player2');
 const gridWidth = 10;
 const message = document.querySelector('#win-message');
-
+const randomGenerator = document.querySelectorAll('.random-generator');
 
 const player1 = new Player('player1', new Gameboard());
 const player2 = new Player('player2', new Gameboard());
 
 const player1UI = BattleshipUI(player1, Ship);
 const player2UI = BattleshipUI(player2, Ship);
-
-setup();
 
 function setup() {
     player1UI.init(player1Grid, player1ships, gridWidth);
@@ -42,6 +40,9 @@ function setup() {
                 ship.addEventListener('dblclick', player2UI.rotate);
             });
     
+    randomGenerator.forEach(btn => {
+        btn.addEventListener('click', randomize)
+    })
 }
 
 
@@ -61,6 +62,7 @@ const observer = new MutationObserver(mutations => {
             observer.disconnect();
             makeGridClickable(player2Grid)
             player2Grid.addEventListener('click', firstAttack);
+            player1Grid.classList.add('current');
         }     
     }
 })
@@ -68,15 +70,17 @@ const observer = new MutationObserver(mutations => {
 function makeGridClickable(grid) {
     grid.classList.contains('player1') ? 
         Array.from(grid.children).forEach(block => { 
-            block.addEventListener('click', player1UI.handleClick);
+            block.addEventListener('click', player1UI.handleClick.bind(player1UI));
     }) :
-    Array.from(grid.children).forEach(block => {
-        block.addEventListener('click', player2UI.handleClick);
+        Array.from(grid.children).forEach(block => {
+            block.addEventListener('click', player2UI.handleClick.bind(player2UI));
     }) ;
 }
 
 function handleAttack(e) {
     const grid = e.target.parentNode;
+    if (!grid.classList.contains('current')) {return}
+    console.log(grid);
     Array.from(grid.children).forEach(block => { block.classList.add('not-clickable'); });
     if(grid.classList.contains('player1')) {
         player2Grid.addEventListener('click', handleAttack);
@@ -89,7 +93,7 @@ function handleAttack(e) {
         player2Grid.removeEventListener('click', handleAttack);
         checkWinStatus(player2)
     }    
-    
+    grid.classList.remove('current');
 }
 
 function firstAttack(e) {
@@ -112,4 +116,18 @@ function displayWinningMessage(player) {
     player2UI.revealGrid();
 }
 
+function randomize(e) {
+    const playerUI = e.target.getAttribute('data-player') === '1' ? player1UI : player2UI;
+    const playerShips = e.target.getAttribute('data-player') === '1' ? player1ships : player2ships;
+    let _ships = playerShips.children;
+
+    while(_ships.length > 0) {
+        const _ship = _ships[0];
+        _ship.setAttribute('data-angle', `${Math.random() < 0.5 ? '0' : '90'}`);
+        playerUI.addShip(_ship, Math.floor(Math.random()*99));
+        _ships = playerShips.children // update the nodeArray
+    }
+}
+
+setup();
 observer.observe(player1ships, { childList : true })
