@@ -80,7 +80,6 @@ function makeGridClickable(grid) {
 function handleAttack(e) {
     const grid = e.target.parentNode;
     if (!grid.classList.contains('current')) {return}
-    console.log(grid);
     Array.from(grid.children).forEach(block => { block.classList.add('not-clickable'); });
     if(grid.classList.contains('player1')) {
         player2Grid.addEventListener('click', handleAttack);
