@@ -46,6 +46,7 @@ function BattleshipUI(player, Ship) {
         const shipSize = Number(ship.getAttribute('data-ship-size'));
         const angle = ship.getAttribute('data-angle');
         const shipArea = [];
+        const name = ship.classList[1];
         if(angle === "0"){
             shipArea.push(...this.gridBlocks.slice(box, box + shipSize))
         } else {
@@ -54,28 +55,20 @@ function BattleshipUI(player, Ship) {
             }
         }
 
-        if (this.isValidLocation(shipSize, box, angle, shipArea)) {
+        if ( this.isInBorder(shipSize, box, angle) && this.hasNoCollision(shipArea)) {//this.isValidLocation(shipSize, box, angle, shipArea)) {
             for (let i = 0; i < shipSize; i++) {
-                if (angle === "0") {
-                    shipArea[i].classList.add('contains-ship');
-                } else {
-                    shipArea[i].classList.add('contains-ship');
-                }
+                    shipArea[i].classList.add('contains-ship', name);
             }
-            player.gameboard.addShip(new Ship(ship.id, shipSize, angle, box))
-            this.ships.removeChild(ship)
+            player.gameboard.addShip(new Ship(ship.id, shipSize, angle, box));
+            this.ships.removeChild(ship);
         }
     },
 
-    isValidLocation: function(shipSize, pos, angle, shipArea) {
-        return this.isInBorder(shipSize, pos, angle) && this.hasNoCollision(shipArea);
-    },
-
-    isInBorder: function(shipSize, pos, angle) {
+    isInBorder: function(shipSize, box, angle) {
         if (angle === '0') {
-            return this.gridWidth - pos % 10 >= shipSize;
+            return this.gridWidth - box % 10 >= shipSize;
         }
-        return pos + (shipSize-1) * 10 < 100;
+        return box + (shipSize-1) * 10 < 100;
     },
 
     hasNoCollision: function(shipArea) {
@@ -95,11 +88,18 @@ function BattleshipUI(player, Ship) {
 
     handleClick: function(e) {
         const block = e.currentTarget;
+        if (e.currentTarget.classList.contains('hit') ||
+            e.currentTarget.classList.contains('miss')) return;
+        block.parentNode.classList.add('current');
         player.gameboard.recieveAttack(block.id);
-        block.classList.contains('contains-ship') ? 
-            block.classList.add('hit') :
-            block.classList.add('miss') ;
-            block.classList.remove('hide');
+        if (block.classList.contains('contains-ship')) {
+            block.classList.add('hit');
+            const message = player.gameboard.findShip(block.id).isSunk() ? 'Ship Sunk' : 'HIT!!';
+            this.hitMessage(block.parentNode.children[0], message);
+        } else {    
+            block.classList.add('miss');
+        }
+        block.classList.remove('hide');
     },
 
     hideGrid: function() {
@@ -116,7 +116,15 @@ function BattleshipUI(player, Ship) {
                 block.classList.remove('hide');
             });
         }, 3000)
-    }
+    },
+
+    hitMessage: function(messageDiv, message) {
+        messageDiv.innerText = message;
+        messageDiv.classList.remove('hidden');
+        setTimeout(() => {
+            messageDiv.classList.add('hidden');
+        }, 800);
+    },
 
 }} // end battleshipUI
 
