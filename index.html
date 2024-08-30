@@ -12,6 +12,7 @@
     <div id="content-container">
         <div id="game-container">
             <div class="game-and-coords-container">
+                <h3 class="player-title">player 1</h3>
                     <ul class="x-coords">
                         <li>1</li>
                         <li>2</li>
@@ -25,6 +26,7 @@
                         <li>10</li>
                     </ul>
                 <div class="game-grid player1">
+                    <div class="hit-message1 hidden"></div>
                 </div>
                 <ul class="y-coords">
                     <li>1</li>
@@ -38,18 +40,20 @@
                     <li>9</li>
                     <li>10</li>
                 </ul>
+                <button class="random-generator" data-player="1">Random</button>
                 <div class="ships-list">
                     <h3 class="ships-list-title">Battleships</h3>
                     <div class="ships player1">
-                        <div class="ship" data-ship-size="2" data-angle="0" draggable="true" id="patrol-boat"></div>
-                        <div class="ship" data-ship-size="3" data-angle="0" draggable="true" id="submarine"></div>
-                        <div class="ship" data-ship-size="3" data-angle="0" draggable="true" id="destroyer"></div>
-                        <div class="ship" data-ship-size="4" data-angle="0" draggable="true" id="battleship"></div>
-                        <div class="ship" data-ship-size="5" data-angle="0" draggable="true" id="carrier"></div>
+                        <div class="ship patrol-boat" data-ship-size="2" data-angle="0" draggable="true" id="patrol-boat"></div>
+                        <div class="ship submarine" data-ship-size="3" data-angle="0" draggable="true" id="submarine"></div>
+                        <div class="ship destroyer" data-ship-size="3" data-angle="0" draggable="true" id="destroyer"></div>
+                        <div class="ship battleship" data-ship-size="4" data-angle="0" draggable="true" id="battleship"></div>
+                        <div class="ship carrier" data-ship-size="5" data-angle="0" draggable="true" id="carrier"></div>
                     </div>
                 </div>
             </div>
             <div class="game-and-coords-container">
+                <h3 class="player-title">player 2</h3>
                 <ul class="x-coords">
                     <li>1</li>
                     <li>2</li>
@@ -63,6 +67,7 @@
                     <li>10</li>
                 </ul>
             <div class="game-grid player2">
+                <div class="hit-message2 hidden"></div>
             </div>
             <ul class="y-coords">
                 <li>1</li>
@@ -76,14 +81,15 @@
                 <li>9</li>
                 <li>10</li>
             </ul>
+            <button class="random-generator" data-player="2">Random</button>
             <div class="ships-list">
                 <h3 class="ships-list-title">Battleships</h3>
                 <div class="ships player2">
-                    <div class="ship" data-ship-size="2" data-angle="0" id="patrol-boat2"></div>
-                    <div class="ship" data-ship-size="3" data-angle="0" id="submarine2"></div>
-                    <div class="ship" data-ship-size="3" data-angle="0" id="destroyer2"></div>
-                    <div class="ship" data-ship-size="4" data-angle="0" id="battleship2"></div>
-                    <div class="ship" data-ship-size="5" data-angle="0" id="carrier2"></div>
+                    <div class="ship patrol-boat" data-ship-size="2" data-angle="0" id="patrol-boat2"></div>
+                    <div class="ship submarine" data-ship-size="3" data-angle="0" id="submarine2"></div>
+                    <div class="ship destroyer" data-ship-size="3" data-angle="0" id="destroyer2"></div>
+                    <div class="ship battleship" data-ship-size="4" data-angle="0" id="battleship2"></div>
+                    <div class="ship carrier" data-ship-size="5" data-angle="0" id="carrier2"></div>
                 </div>
             </div>
         </div>
